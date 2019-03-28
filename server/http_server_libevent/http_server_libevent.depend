@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1553690872 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
+	<iostream>
+	<event.h>
+	<evhttp.h>
+	<unistd.h>
+	<string.h>
+	<signal.h>
+	<vector>
+	<functional>
+	<memory>
+	"logging.hpp"
+	<thread>
+
+1553780214 /home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
+	<string>
+	<stdexcept>
+	<iostream>
+	<fstream>
+	<sstream>
+	<mutex>
+	<unordered_map>
+	<memory>
+	<chrono>
+	<ctime>
+	<cstdlib>
+
+1553780236 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.cpp
+	"logging.hpp"
+
+1553780214 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
+	<string>
+	<stdexcept>
+	<iostream>
+	<fstream>
+	<sstream>
+	<mutex>
+	<unordered_map>
+	<memory>
+	<chrono>
+	<ctime>
+	<cstdlib>
+
