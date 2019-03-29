@@ -82,7 +82,6 @@ namespace logging
         public:
             std_out_logger() = delete;
             std_out_logger(const logging_config_t& config) : logger(config), levels_(config.find("color") != config.end() ? colored : uncolored) {}
-       //     ~std_out_logger() {};
             virtual void log(const std::string& message, const log_level level);
             virtual void log(const std::string& message);
 
@@ -97,7 +96,6 @@ namespace logging
             file_logger(const logging_config_t& config);
             virtual void log(const std::string& message, const log_level level);
             virtual void log(const std::string& messages);
-         //   ~file_logger() {};
         protected:
             void reopen();
             std::string file_name_;
@@ -134,7 +132,7 @@ namespace logging
         get_logger(config);
     }
 
-  /*  inline void log(const std::string& message, const log_level level)
+    inline void log(const std::string& message, const log_level level)
     {
         get_logger().log(message, level);
     }
@@ -146,27 +144,27 @@ namespace logging
 
     inline void TRACE(const std::string& message)
     {
-        get_logger().log((message, log_level::TRACE));
+        get_logger().log(message, log_level::TRACE);
     }
 
     inline void DEBUG(const std::string& message)
     {
-        get_logger().log((message, log_level::DEBUG));
+        get_logger().log(message, log_level::DEBUG);
     }
 
     inline void INFO(const std::string& message)
     {
-        get_logger().log((message, log_level::INFO));
+        get_logger().log(message, log_level::INFO);
     }
 
     inline void WARN(const std::string& message)
     {
-        get_logger().log((message, log_level::WARN));
+        get_logger().log(message, log_level::WARN);
     }
 
     inline void ERROR(const std::string& message)
     {
-        get_logger().log((message, log_level::ERROR));
-    }*/
+        get_logger().log(message, log_level::ERROR);
+    }
 }
 #endif // LOGGING_HPP_INCLUDED
