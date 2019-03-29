@@ -38,7 +38,7 @@ void file_logger::log(const std::string& message, const log_level level)
     std::string output;
     output.reserve(message.length() + 64);
     output.append(timestamp());
-    output.append(uncolored.find(level)->second);
+    output.append(colored.find(level)->second);
     output.append(message);;
     output.push_back('\n');
     log(output);

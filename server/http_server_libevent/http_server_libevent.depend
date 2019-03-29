@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1553690872 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
+1553846240 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
 	<iostream>
 	<event.h>
 	<evhttp.h>
@@ -12,7 +12,7 @@
 	"logging.hpp"
 	<thread>
 
-1553780214 /home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
+1553846961 /home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
 	<string>
 	<stdexcept>
 	<iostream>
@@ -25,10 +25,10 @@
 	<ctime>
 	<cstdlib>
 
-1553780236 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.cpp
+1553846177 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.cpp
 	"logging.hpp"
 
-1553780214 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
+1553846961 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
 	<string>
 	<stdexcept>
 	<iostream>

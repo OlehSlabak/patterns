@@ -24,6 +24,13 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+
+    logging::configure({ {"type", "file"}, {"file_name", "test.log"}, {"reopen_interval", "1"} });
+
+    logging::INFO("Start");
+
+    /*Run http server */
+
+    logging::INFO("End");
     return 0;
 }
