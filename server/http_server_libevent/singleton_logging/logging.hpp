@@ -2,7 +2,6 @@
 #define LOGGING_HPP_INCLUDED
 
 /* logging singleton */
-
 #include <string>
 #include <stdexcept>
 #include <iostream>

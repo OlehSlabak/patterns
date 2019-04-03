@@ -1,16 +1,7 @@
 # depslib dependency file v1.0
-1553846240 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
-	<iostream>
-	<event.h>
-	<evhttp.h>
-	<unistd.h>
-	<string.h>
-	<signal.h>
-	<vector>
-	<functional>
-	<memory>
-	"logging.hpp"
-	<thread>
+1554213466 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
+	"singleton_logging/logging.hpp"
+	"http_server/http_server.hpp"
 
 1553846961 /home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
 	<string>
@@ -25,7 +16,7 @@
 	<ctime>
 	<cstdlib>
 
-1553846177 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.cpp
+1554105492 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.cpp
 	"logging.hpp"
 
 1553846961 source:/home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
@@ -40,4 +31,52 @@
 	<chrono>
 	<ctime>
 	<cstdlib>
+
+1554215717 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket_holder.cpp
+	"socket_holder.h"
+	"exceptions.h"
+	<unistd.h>
+	<sys/socket.h>
+	<string>
+	<iostream>
+
+1554215375 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket_holder.h
+	"non_copyable.h"
+	"my_types.h"
+	<cstdlib>
+	<memory>
+
+1554206980 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/non_copyable.h
+
+1554213362 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/my_types.h
+
+1554216066 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/exceptions.h
+	<stdexcept>
+	"../../singleton_logging/logging.hpp"
+
+1554205411 /home/oleh/Desktop/pattern/server/http_server_libevent/singleton_logging/logging.hpp
+	<string>
+	<stdexcept>
+	<iostream>
+	<fstream>
+	<sstream>
+	<mutex>
+	<unordered_map>
+	<memory>
+	<chrono>
+	<ctime>
+	<cstdlib>
+
+1554213484 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/http_server.hpp
+	"../singleton_logging/logging.hpp"
+	<event.h>
+	<evhttp.h>
+	<unistd.h>
+	<signal.h>
+	<vector>
+	<functional>
+	<thread>
+
+1554105492 source:/home/oleh/Desktop/pattern/server/http_server_libevent/singleton_logging/logging.cpp
+	"logging.hpp"
 
