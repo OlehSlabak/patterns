@@ -22,8 +22,6 @@ namespace Network
     };
 
     typedef std::unique_ptr<SocketHolder> SocketHolderPtr;
-
-
 }
 
 #endif // SOCKET_HOLDER_H_INCLUDED
