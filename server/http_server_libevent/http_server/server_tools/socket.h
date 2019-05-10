@@ -14,9 +14,10 @@ namespace Network
         public:
             enum Type {TCP, UDP};
             Socket(Type type, bool non_blocking);
-            void Bind(InetAddressPtr addr);
+            void Bind(InetAddress const &addr);
             void Listen(int backlog);
-            SocketHolderPtr Accept(bool non_blocking, sockaddr *new_addr = 0, socklen_t *new_addr_size = 0);
+            void Accept(SocketHolder *newSocket, bool nonBlocking,
+                        sockaddr *newAddr, socklen_t *newAddrSize);
         private:
             static int GetSockType(Type type);
         protected:

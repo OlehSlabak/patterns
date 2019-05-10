@@ -12,16 +12,14 @@ namespace Network
     {
         public:
             SocketHolder();
-            explicit SocketHolder(SocketHandle handle);
+            SocketHolder(SocketHandle handle);
             virtual ~SocketHolder();
             SocketHandle GetHandler() const;
-
-        private:
             bool isValid() const;
+            void Swap(SocketHolder &holder);
+        private:
         SocketHandle _handler;
     };
-
-    typedef std::unique_ptr<SocketHolder> SocketHolderPtr;
 }
 
 #endif // SOCKET_HOLDER_H_INCLUDED

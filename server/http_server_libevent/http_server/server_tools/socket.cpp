@@ -12,11 +12,10 @@ namespace Network
         : SocketHolder(socket(AF_INET, GetSockType(type) | (non_blocking ? SOCK_NONBLOCK : 0), 0))
         {}
 
-    void Socket::Bind(InetAddressPtr addr)
+    void Socket::Bind(InetAddress const &addr)
     {
         logging::DEBUG("Socket::Bind");
-        _addr = std::move(addr);
-        if (bind(GetHandler(), _addr->GetAddr(), _addr->GetSize()) == -1)
+        if (bind(GetHandler(), addr.GetAddr(), addr.GetSize()) == -1)
         {
             throw SocketException("Failed to bind socket", errno);
         }
@@ -31,13 +30,14 @@ namespace Network
         }
     }
 
-    SocketHolderPtr Socket::Accept(bool non_blocking, sockaddr *new_addr, socklen_t *new_addr_len)
+    void Socket::Accept(SocketHolder *newSocket, bool nonBlocking, sockaddr *newAddr, socklen_t *newAddrSize)
     {
-        logging::DEBUG("Socket::Accept");
-        SocketHolderPtr new_socket(new SocketHolder(accept4(GetHandler(), new_addr, new_addr_len, non_blocking ? SOCK_NONBLOCK : 0)));
-
-        return new_socket;
-
+        if (!newSocket)
+          throw SocketException("Invalid input parameter");
+        if (newSocket->isValid())
+          throw SocketException("Input holder must be not initialized");
+        SocketHolder NewSocket(accept4(GetHandler(), newAddr, newAddrSize, nonBlocking ? SOCK_NONBLOCK : 0));
+        newSocket->Swap(NewSocket);
     }
 
     int Socket::GetSockType(Type type)

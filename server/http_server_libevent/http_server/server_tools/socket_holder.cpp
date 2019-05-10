@@ -47,4 +47,10 @@ namespace Network
         return _handler != invalidSocket;
     }
 
+    void SocketHolder::Swap(SocketHolder &holder)
+    {
+        SocketHandle Tmp = _handler;
+        _handler = holder._handler;
+        holder._handler = Tmp;
+    }
 }

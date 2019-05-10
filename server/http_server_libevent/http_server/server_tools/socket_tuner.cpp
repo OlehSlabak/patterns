@@ -4,7 +4,7 @@
 
 #include <errno.h>
 #include <netinet/tcp.h>
-#include <arpa/inet.h
+#include <arpa/inet.h>
 
 namespace Network
 {

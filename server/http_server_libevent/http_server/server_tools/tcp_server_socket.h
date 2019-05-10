@@ -9,7 +9,7 @@ namespace Network
     class TCPServerSocket : public Socket
     {
         public:
-            TCPServerSocket(InetAddressPtr locAddr, int backlog);
+            TCPServerSocket(InetAddress const &locAddr, int backlog);
     };
 }
 
