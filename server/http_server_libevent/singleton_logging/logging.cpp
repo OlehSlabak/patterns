@@ -46,11 +46,11 @@ void file_logger::log(const std::string& message, const log_level level)
 
 void file_logger::log(const std::string& message)
 {
-   // lock_.lock();
-    std::lock_guard<std::mutex> lock(lock_);
+    lock_.lock();
+  //  std::lock_guard<std::mutex> lock(lock_);
     file_ << message;
     file_.flush();
-   // lock_.unlock();
+   lock_.unlock();
     reopen();
 }
 

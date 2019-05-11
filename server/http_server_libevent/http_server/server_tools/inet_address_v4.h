@@ -9,7 +9,7 @@ namespace Network
     class InetAddressV4 : public InetAddress
     {
         public:
-            static InetAddressPtr CreateFromString(const std::string &addr, unsigned short port);
+            static InetAddressV4 CreateFromString(const std::string &addr, unsigned short port);
         private:
             InetAddressV4(sockaddr const *addr, int size);
     };

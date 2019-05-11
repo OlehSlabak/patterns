@@ -32,7 +32,7 @@ namespace Network
             public:
                 EventBaseHolder() : _eventBase(event_base_new())
                 {
-                    if (_eventBase)
+                    if (!_eventBase)
                         throw EventBaseHolderException("Failed to create new event_base");
                 }
 

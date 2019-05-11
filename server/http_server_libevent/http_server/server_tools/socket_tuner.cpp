@@ -35,7 +35,7 @@ namespace Network
     {
 
         if (code != invalideCode)
-            return
+            return;
         throw SocketTunerException(msg, errNo);
     }
 }
