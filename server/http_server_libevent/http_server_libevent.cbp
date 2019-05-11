@@ -32,10 +32,33 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="logging.hpp">
-			<Option compile="1" />
-		</Unit>
+		<Unit filename="http_server/http_server.hpp" />
+		<Unit filename="http_server/server_tools/command_line.cpp" />
+		<Unit filename="http_server/server_tools/command_line.h" />
+		<Unit filename="http_server/server_tools/exceptions.h" />
+		<Unit filename="http_server/server_tools/file_holder.cpp" />
+		<Unit filename="http_server/server_tools/file_holder.h" />
+		<Unit filename="http_server/server_tools/http_server.cpp" />
+		<Unit filename="http_server/server_tools/inet_address.cpp" />
+		<Unit filename="http_server/server_tools/inet_address.h" />
+		<Unit filename="http_server/server_tools/inet_address_v4.cpp" />
+		<Unit filename="http_server/server_tools/inet_address_v4.h" />
+		<Unit filename="http_server/server_tools/my_types.h" />
+		<Unit filename="http_server/server_tools/non_copyable.h" />
+		<Unit filename="http_server/server_tools/socket.cpp" />
+		<Unit filename="http_server/server_tools/socket.h" />
+		<Unit filename="http_server/server_tools/socket_holder.cpp" />
+		<Unit filename="http_server/server_tools/socket_holder.h" />
+		<Unit filename="http_server/server_tools/socket_tuner" />
+		<Unit filename="http_server/server_tools/socket_tuner.cpp" />
+		<Unit filename="http_server/server_tools/socket_tuner.h" />
+		<Unit filename="http_server/server_tools/tcp_server_socket.cpp" />
+		<Unit filename="http_server/server_tools/tcp_server_socket.h" />
+		<Unit filename="http_server/server_tools/thread.cpp" />
+		<Unit filename="http_server/server_tools/thread.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="singleton_logging/logging.cpp" />
+		<Unit filename="singleton_logging/logging.hpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
