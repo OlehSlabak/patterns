@@ -81,6 +81,7 @@ namespace Network
         HTTPServer::HTTPServer(Network::InetAddress const &locAddr, int backlog, int maxThreadCount, std::string const &rootDir, std::string const &defaultPage)
         : TCPServerSocket(locAddr, backlog)
         {
+        logging::INFO("HTTPServer");
             for (int i = 0; i < maxThreadCount; ++i)
             {
                 _serverThreads.push_back(_serverThreadPtr(new Private::ServerThread(GetHandler(), rootDir, defaultPage)));

@@ -17,11 +17,9 @@ namespace Network
             void Bind(InetAddress const &addr);
             void Listen(int backlog);
             void Accept(SocketHolder *newSocket, bool nonBlocking,
-                        sockaddr *newAddr, socklen_t *newAddrSize);
+                        sockaddr *newAddr = 0, socklen_t *newAddrSize = 0);
         private:
             static int GetSockType(Type type);
-        protected:
-            InetAddressPtr _addr;
     };
 
 }

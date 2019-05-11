@@ -13,7 +13,7 @@ namespace System
     class FileHolder : private Common::NonCopyable
     {
         public:
-            explicit FileHolder(const std::string &fileName);
+            FileHolder(const std::string &fileName);
             virtual ~FileHolder();
             void Open(const std::string &fileName);
             int GetHandle() const;
