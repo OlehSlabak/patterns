@@ -37,9 +37,10 @@ namespace System
         if (_handle != -1)
         {
             close(_handle);
-            _handle = newHandler;
-            _size = newSize;
         }
+        _handle = newHandler;
+        _size = newSize;
+
     }
 
     int FileHolder::GetHandle() const
