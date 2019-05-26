@@ -47,6 +47,7 @@
 			<Add library="event_core" />
 			<Add library="pthread" />
 		</Linker>
+		<Unit filename="builder_html/builder_html.h" />
 		<Unit filename="http_server/http_server.hpp" />
 		<Unit filename="http_server/server_tools/command_line.cpp" />
 		<Unit filename="http_server/server_tools/command_line.h" />
