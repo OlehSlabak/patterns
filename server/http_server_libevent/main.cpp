@@ -1,11 +1,12 @@
 #include "singleton_logging/logging.hpp"
 #include "http_server/http_server.hpp"
+#include "builder_html/builder_html.h"
 
 #define LOGGING_LEVEL_ALL 1
 int main(int argc, char const **argv)
 {
-
     logging::configure({ {"type", "file"}, {"file_name", "test.log"}, {"reopen_interval", "1"} });
+
 
     logging::INFO("Start");
     Network::Private::HTTPServer Srv(Network::InetAddressV4::CreateFromString("127.0.0.1", 5555), 10, 4, "test_content", "index.html");

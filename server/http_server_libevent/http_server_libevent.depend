@@ -32,7 +32,7 @@
 	<ctime>
 	<cstdlib>
 
-1554215717 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket_holder.cpp
+1557501778 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket_holder.cpp
 	"socket_holder.h"
 	"exceptions.h"
 	<unistd.h>
@@ -67,7 +67,7 @@
 	<ctime>
 	<cstdlib>
 
-1557500875 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/http_server.hpp
+1557731578 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/http_server.hpp
 	"../singleton_logging/logging.hpp"
 	<event.h>
 	<evhttp.h>
@@ -84,31 +84,31 @@
 	"server_tools/file_holder.h"
 	"server_tools/thread.hpp"
 
-1554105492 source:/home/oleh/Desktop/pattern/server/http_server_libevent/singleton_logging/logging.cpp
+1557731578 source:/home/oleh/Desktop/pattern/server/http_server_libevent/singleton_logging/logging.cpp
 	"logging.hpp"
 
-1554281683 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address.cpp
+1557731578 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address.cpp
 	"inet_address.h"
-	"exceptions.h"
 	<string>
 	<cstring>
 
-1554216640 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address.h
+1557731578 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address.h
 	<sys/socket.h>
-	<memory>
+	"exceptions.h"
+	"non_copyable.h"
 
-1555329512 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket.cpp
+1557501785 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket.cpp
 	"socket.h"
 	"inet_address.h"
 	"exceptions.h"
 	<errno.h>
 
-1557501501 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket.h
+1557731578 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket.h
 	"socket_holder.h"
 	"inet_address.h"
 	<sys/socket.h>
 
-1557213521 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket_tuner.cpp
+1557731578 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/socket_tuner.cpp
 	"socket_tuner.h"
 	"exceptions.h"
 	<errno.h>
@@ -136,21 +136,21 @@
 	<unordered_map>
 	<sstream>
 
-1557235495 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address_v4.cpp
+1558382976 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address_v4.cpp
 	"inet_address_v4.h"
 	<arpa/inet.h>
 	<iostream>
 
-1557235274 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address_v4.h
+1557731578 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/inet_address_v4.h
 	"inet_address.h"
 	<string>
 
-1557237499 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/file_holder.cpp
+1557912401 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/file_holder.cpp
 	"file_holder.h"
 	<fcntl.h>
 	<unistd.h>
 
-1557489942 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/file_holder.h
+1557731578 /home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/file_holder.h
 	"exceptions.h"
 	"non_copyable.h"
 	<string>
@@ -162,7 +162,7 @@
 	<memory>
 	<pthread.h>
 
-1557500861 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/http_server.cpp
+1557731578 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/http_server.cpp
 	"../http_server.hpp"
 
 1557492161 source:/home/oleh/Desktop/pattern/server/http_server_libevent/http_server/server_tools/thread.cpp
@@ -311,4 +311,16 @@
 
 1557602306 source:/home/oleh/Desktop/testprj/patterns/server/http_server_libevent/singleton_logging/logging.cpp
 	"logging.hpp"
+
+1558419867 source:/home/oleh/Desktop/pattern/server/http_server_libevent/builder_html/builder_html.cpp
+	"builder_html.h"
+
+1558425466 /home/oleh/Desktop/pattern/server/http_server_libevent/builder_html/builder_html.h
+	<string>
+	<iostream>
+	<sstream>
+	<memory>
+	<algorithm>
+	<vector>
+	"../singleton_logging/logging.hpp"
 
