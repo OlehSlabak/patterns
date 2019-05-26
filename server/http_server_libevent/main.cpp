@@ -7,10 +7,20 @@ int main(int argc, char const **argv)
 {
     logging::configure({ {"type", "file"}, {"file_name", "test.log"}, {"reopen_interval", "1"} });
 
+   {
+        HtmlElement h2("h2", "javaScript test", 1);
 
-    logging::INFO("Start");
-    Network::Private::HTTPServer Srv(Network::InetAddressV4::CreateFromString("127.0.0.1", 5555), 10, 4, "test_content", "index.html");
-     std::cin.get();
+        CreatePage(h2);
+        h2.Print();
+   }
+
+
+
+
+
+  //  logging::INFO("Start");
+ //   Network::Private::HTTPServer Srv(Network::InetAddressV4::CreateFromString("127.0.0.1", 5555), 10, 4, "test_content", "index.html");
+   //  std::cin.get();
     /*
     try
     {
