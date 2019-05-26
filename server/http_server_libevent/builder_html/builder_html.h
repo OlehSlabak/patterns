@@ -12,35 +12,64 @@
 
 /* builder*/
 
-class HtmlBuilder
+class PageBuilder
 {
     public:
-        virtual ~HtmlBuilder() {};
-
-        virtual void CreadTag() const = 0;
-        virtual void CreateBody() const = 0;
-        virtual void CloseTag() const = 0;
+        virtual ~PageBuilder() {};
+        virtual void CreadTag() = 0;
+        virtual void CreateBody() = 0;
+        virtual void CloseTag() = 0;
 
         virtual void Print()
         {
              logging::DEBUG("create element");
             // print to file
              std::cout << _oss.str() << std::endl;
-        }
+        };
     protected:
         std::ostringstream _oss;
-
+        std::string str;
 };
 
-class HtmlElement : public HtmlBuilder
+
+
+class HtmlElement : public PageBuilder
 {
     public:
         virtual ~HtmlElement() {};
         HtmlElement(const std::string &name, const std::string &text, const int indent) : _name(name), _text(text), _current_indent(indent) {}
+
+        virtual void CreadTag()
+        {
+            _oss << std::string(_base_indet_size * (_current_indent + 1), ' ') << "<" << _name << ">" << std::endl;
+        }
+
+        virtual void CreateBody()
+        {
+            if (_text.size() > 0)
+                _oss << std::string(_base_indet_size * (_current_indent + 2), ' ') << _text << std::endl;
+        }
+        virtual void CloseTag()
+        {
+            _oss << std::string(_base_indet_size * (_current_indent + 1), ' ') << "</" << _name << ">" << std::endl;
+        }
+    private:
+        std::string _name;
+        std::string _text;
+        const size_t _base_indet_size = 2;
+        int _current_indent = 0;
+};
+
+/*
+class JavaElement : public PageBuilder
+{
+    public:
+        virtual ~JavaElement() {};
+        JavaElement(const std::string &name, const std::string &text, const int indent) : _name(name), _text(text), _current_indent(indent) {}
         virtual void CreadTag(const int indent) const
         {
-            std::string i(_base_indet_size * (_current_indent + 1), ' ');
-            _oss << i << "<" << _name << ">" << std::endl;
+            _index(_base_indet_size * (_current_indent + 1), ' ');
+            _oss << _index << "<" << _name << ">" << std::endl;
         }
 
         virtual void CreateBody()
@@ -50,17 +79,19 @@ class HtmlElement : public HtmlBuilder
         }
         virtual void CloseTag()
         {
-             oss << i << "</" << _name << ">" << std::endl;
+             oss << _index << "</" << _name << ">" << std::endl;
         }
     private:
         std::string _text;
         std::string _name;
+        std::string _index;
         const size_t _base_indet_size = 2;
         int _current_indent = 0;
 };
 
+*/
 
-void CreatePage(HtmlBuilder& page)
+void CreatePage(PageBuilder& page)
 {
     page.CreadTag();
     page.CreateBody();
