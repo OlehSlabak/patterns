@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1554213466 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
+1558959875 source:/home/oleh/Desktop/pattern/server/http_server_libevent/main.cpp
 	"singleton_logging/logging.hpp"
 	"http_server/http_server.hpp"
+	"builder_html/builder_html.h"
 
 1553846961 /home/oleh/Desktop/pattern/server/http_server_libevent/logging.hpp
 	<string>
@@ -313,16 +314,17 @@
 1557602306 source:/home/oleh/Desktop/testprj/patterns/server/http_server_libevent/singleton_logging/logging.cpp
 	"logging.hpp"
 
-1558419867 source:/home/oleh/Desktop/pattern/server/http_server_libevent/builder_html/builder_html.cpp
+1558956032 source:/home/oleh/Desktop/pattern/server/http_server_libevent/builder_html/builder_html.cpp
 	"builder_html.h"
 
-1558425466 /home/oleh/Desktop/pattern/server/http_server_libevent/builder_html/builder_html.h
+1558960123 /home/oleh/Desktop/pattern/server/http_server_libevent/builder_html/builder_html.h
 	<string>
 	<iostream>
 	<sstream>
 	<memory>
 	<algorithm>
 	<vector>
+	<iomanip>
 	"../singleton_logging/logging.hpp"
 
 1558897427 /home/oleh/Desktop/testprj/patterns/server/http_server_libevent/builder_html/builder_html.h
