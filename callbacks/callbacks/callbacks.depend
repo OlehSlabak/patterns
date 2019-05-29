@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1559134193 source:/home/oleh/Desktop/pattern/callbacks/callbacks/main.cpp
+	<iostream>
+	<vector>
+	<array>
+
