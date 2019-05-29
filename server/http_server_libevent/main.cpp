@@ -7,20 +7,41 @@ int main(int argc, char const **argv)
 {
     logging::configure({ {"type", "file"}, {"file_name", "test.log"}, {"reopen_interval", "1"} });
 
-   {
-        HtmlElement h2("h2", "javaScript test", 1);
+    /* Builder #1 */
+    Builder_1::HtmlElement h2("h2", "teg test", 0);
+    Builder_1::TextElement text("h2", "body text");
+    Builder_1::CreatePage(h2);
+    Builder_1::CreatePage(text);
 
-        CreatePage(h2);
-        h2.Print();
-   }
+    h2.Print();
+    text.Print();
+
+
+    /* Builder #2 */
+    Builder_2::HtmlBuilder builder { "ul" };
+    builder.add_child("li", "hello").add_child("li", "world");
+    std::cout << builder.str() << std::endl;
+
+
+    /* Builder_3 */
+    Builder_3::Product p1 = Builder_3::Product::Builder().setI(2).setF(0.5f).setC('x').setI(3).build();
+	p1.print();
+
+	Builder_3::Product::Builder b;
+	b.setProductP();
+
+	Builder_3::Product p2 = b.build(); // get Product P object
+	b.setC('!'); // customize Product P
+
+	Builder_3::Product p3 = b.build();
+	p2.print(); // test p2
+	p3.print(); // test p3
 
 
 
-
-
-  //  logging::INFO("Start");
- //   Network::Private::HTTPServer Srv(Network::InetAddressV4::CreateFromString("127.0.0.1", 5555), 10, 4, "test_content", "index.html");
-   //  std::cin.get();
+    logging::INFO("Start HTTP Server");
+    Network::Private::HTTPServer Srv(Network::InetAddressV4::CreateFromString("127.0.0.1", 5555), 10, 4, "test_content", "index.html");
+    std::cin.get();
     /*
     try
     {
@@ -49,6 +70,6 @@ int main(int argc, char const **argv)
         logging::ERROR(e.what());
     }*/
 
-    logging::INFO("End");
+    logging::INFO("Stop HTTP Server");
     return 0;
 }
