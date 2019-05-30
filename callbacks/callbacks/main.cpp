@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <functional>
+
 
 namespace function_pointer
 {
@@ -131,6 +133,23 @@ namespace pointer_to_memeber
       }
     }
 
+    namespace std_function
+    {
+        // i.e. using the above function declaration of foo:
+        std::function<int(int)> stdf_foo = &foo;
+        // or C::foo:
+        std::function<int(const C&, int)> stdf_C_foo = &C::foo;
+
+        int stdf_foobar (int x, std::function<int(int)> moo)
+        {
+            return x + moo(x); // std::function moo called
+        }
+
+        int stdf_C_foobar (int x, C const &c, std::function<int(C const &, int)> moo)
+        {
+            return x + moo(c, x); // std::function moo called using c and x
+        }
+    }
 
 }
 
@@ -148,7 +167,12 @@ int main()
 */
       pointer_to_memeber::member_function::member_function();
 
+    std::function<return_type(parameter_type_1, parameter_type_2, parameter_type_3)>
 
+    // i.e. using the above function declaration of foo:
+    std::function<int(int)> stdf_foo = &foo;
+    // or C::foo:
+    std::function<int(const C&, int)> stdf_C_foo = &C::foo;
 
     return 0;
 }
