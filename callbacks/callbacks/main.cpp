@@ -95,15 +95,16 @@ namespace function_pointer
 }
 namespace pointer_to_memeber
 {
+    struct MyStruct
+    {
+      int _y;
+      int add(int x) const { return x+_y; }
+      int mul(int x) const { return x*_y; }
+      MyStruct(int y) : _y(y){};
+    };
+
     namespace member_function
     {
-      struct MyStruct
-      {
-        int _y;
-        int add(int x) const { return x+_y; }
-        int mul(int x) const { return x*_y; }
-        MyStruct(int y) : _y(y){};
-      };
 
       typedef int (MyStruct::* func_const_int_t) (int x) const;
       // The type of C_foo_p is a pointer to member function of C taking int returning int
@@ -112,7 +113,6 @@ namespace pointer_to_memeber
       func_const_int_t C_foo_test2 = &MyStruct::add; // // which can also be written using the typedef:
 
       int C_foobar(int x, MyStruct const &c, int (MyStruct::*moo)(int));
-
 
       int C_foobar(int x, MyStruct const &c, func_const_int_t moo)
       {
@@ -136,19 +136,94 @@ namespace pointer_to_memeber
     namespace std_function
     {
         // i.e. using the above function declaration of foo:
-        std::function<int(int)> stdf_foo = &foo;
-        // or C::foo:
-        std::function<int(const C&, int)> stdf_C_foo = &C::foo;
 
-        int stdf_foobar (int x, std::function<int(int)> moo)
+        int simple_function_one(int c)
         {
+            int return_value = 0;
+            std::cout << "Return from simple function one " << c << std::endl;
+            return_value = c + 5;
+            return return_value;
+        }
+
+        int simple_function_two(int c, int d)
+        {
+            int return_value = 0;
+            std::cout << "Return from simple function two " << c << " " << d << std::endl;
+            return_value = 9 * c + d;
+            return return_value;
+        }
+
+        std::function<int(int)> stdf_simple = &simple_function_one;
+        // or C::add:
+        std::function<int(const MyStruct&, int)> stdf_MyStruct_add = &MyStruct::add;
+
+        int stdf_simple_f(int x, std::function<int(int)> moo)
+        {
+            std::cout << " stdf_simple_f ";
             return x + moo(x); // std::function moo called
         }
 
-        int stdf_C_foobar (int x, C const &c, std::function<int(C const &, int)> moo)
+        int stdf_MyStruct_f(int x, MyStruct const &c, std::function<int(MyStruct const &, int)> moo)
         {
             return x + moo(c, x); // std::function moo called using c and x
         }
+
+        void std_function_test()
+        {
+            int test_value = 2;
+            int test_res = 0;
+            test_res = stdf_simple_f(test_value, &simple_function_one);
+            std::cout << " stdf_simple_f " << test_res << std::endl;
+
+            test_res = stdf_simple(6);
+            std::cout << " stdf_simple " << test_res << std::endl;
+
+            MyStruct c(2);
+            test_res = stdf_MyStruct_f(test_value, c, &MyStruct::add);
+            std::cout << " stdf_MyStruct_f  (MyStruct::add) " << test_res << std::endl;
+
+            test_res = stdf_simple_f(test_value, [test_value](int x) -> int {return 5 * test_value; });
+            std::cout << " stdf_simple_f  (lambda) " << test_res << std::endl;
+
+            test_res = stdf_simple_f(test_value, std::bind(simple_function_two, 2, 3));
+            std::cout << " stdf_simple_f  (bind 1) " << test_res << std::endl;
+
+            test_res = stdf_simple_f(test_value, std::bind(simple_function_two, std::placeholders::_1, 3));
+            std::cout << " stdf_simple_f  (bind 1 + place) " << test_res << std::endl;
+
+            test_res = stdf_simple_f(test_value, std::bind(simple_function_two, 5, std::placeholders::_1));
+            std::cout << " stdf_simple_f  (bind 2 + place) " << test_res << std::endl;
+        }
+
+        int double_int(int c)
+        {
+            return c*2;
+        }
+
+        void stdf_tranform_every_int(int *v, unsigned n, std::function<int(int)> fp)
+        {
+            for (unsigned i = 0; i < n; i++)
+            {
+                v[i] = fp(v[i]);
+            }
+        }
+        int nine_x_and_y (int x, int y) { return 9*x + y; }
+        void std_function()
+        {
+            int a[5] = {1,2,3,4,5};
+            stdf_tranform_every_int(&a[0], 5, double_int);
+            function_pointer::for_each_mock::m_for_each(std::begin(a), std::end(a), [](int & a) { std::cout << " " << a; });
+            std::cout << std::endl;
+
+            stdf_tranform_every_int(&a[0], 5, [](int x) -> int { return x/2; });
+            function_pointer::for_each_mock::m_for_each(std::begin(a), std::end(a), [](int & a) { std::cout << " " << a; });
+            std::cout << std::endl;
+
+            stdf_tranform_every_int(&a[0], 5, std::bind(nine_x_and_y, std::placeholders::_1, 4));
+            function_pointer::for_each_mock::m_for_each(std::begin(a), std::end(a), [](int & a) { std::cout << " " << a; });
+            std::cout << std::endl;
+        }
+
     }
 
 }
@@ -165,14 +240,12 @@ int main()
       function_pointer::example_func_pointer::example_func_pointer();
 
 */
+/*
       pointer_to_memeber::member_function::member_function();
+*/
+      //pointer_to_memeber::std_function::std_function_test();
+        pointer_to_memeber::std_function::std_function();
 
-    std::function<return_type(parameter_type_1, parameter_type_2, parameter_type_3)>
-
-    // i.e. using the above function declaration of foo:
-    std::function<int(int)> stdf_foo = &foo;
-    // or C::foo:
-    std::function<int(const C&, int)> stdf_C_foo = &C::foo;
 
     return 0;
 }
