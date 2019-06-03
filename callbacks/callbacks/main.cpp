@@ -2,6 +2,9 @@
 #include <vector>
 #include <array>
 #include <functional>
+#include <map>
+#include <algorithm>
+#include <typeinfo>
 
 
 namespace function_pointer
@@ -24,6 +27,7 @@ namespace function_pointer
             double r = 4.0;
             m_for_each(v.begin(), v.end(), [&](double & v) { v += r; });
             m_for_each(v.begin(), v.end(), [](double & v) { std::cout << " " << v; });
+            std::cout << std::endl;
         }
     }
 
@@ -207,6 +211,7 @@ namespace pointer_to_memeber
                 v[i] = fp(v[i]);
             }
         }
+
         int nine_x_and_y (int x, int y) { return 9*x + y; }
         void std_function()
         {
@@ -228,23 +233,114 @@ namespace pointer_to_memeber
 
 }
 
+namespace template_callback
+{
+    namespace simple_template
+    {
+        template<class R, class T>
+        void stdf_transform_every_int_templ(int * v, unsigned const n,
+                                            std::function<R(T)> fp)
+        {
+           for (unsigned i = 0; i < n; ++i)
+           {
+             v[i] = fp(v[i]);
+           }
+        }
+
+        template<class F>
+        void transform_every_int_templ(int * v, unsigned const n, F f)
+        {
+          std::cout << "transform_every_int_templ<"  << type_name<F>() << ">\n";
+          for (unsigned i = 0; i < n; ++i)
+          {
+             v[i] = f(v[i]);
+          }
+        }
+    }
+
+}
 
 
+void print_menu(const std::map<std::string, std::function<void()>> &menu)
+{
+    int i = 0;
+    int input = 0;
+    for (auto element : menu)
+    {
+        std::cout << i << ") "<< element.first << "\n";
+        i++;
+    }
 
+    /*
+
+    struct menu_item
+{
+  virtual ~menu_item() {}
+  virtual std::string item_text() const = 0;
+  virtual void go() = 0;
+};
+
+struct print_hello_item
+{
+  std::string item_text() const { return "display greeting"; }
+  void go() { std::cout << "Hello there, Mr. User."; }
+};
+
+struct kill_everyone_item
+{
+  std::string item_text() const { return "Go on murderous rampage"; }
+  void go() { for(;;) kill_the_world(); }
+};
+
+struct menu_menu_item
+{
+  menu_menu_item(std::string const& text) : text_(text), items() {}
+  void add_item(std::unique_ptr<menu_item> item) { items.push_back(std::move(item)); }
+  void go()
+  {
+    std::cout << "Choose: \n";
+    std::for_each(items.begin(), items.end(), [](std::unique_ptr<menu_item> const& item)
+    {
+      std::cout << "\t" << item->item_text() << "\n";
+    });
+    std::cout << "\n\n\tYour choice: ";
+    int choice = get_number_from_console();
+    if (items.size() > choice) items[choice]->go();
+  }
+  std::string item_text() const { return text_; }
+
+private:
+  std::string text_;
+  std::vector<std::unique_ptr<menu_item> > items;
+};
+  print_menu(menu);
+  menu_menu_item top_item;
+  top_item.add(std::unique_ptr<menu_item>(new print_hello_item));
+  top_item.add(std::unique_ptr<menu_item>(new kill_everyone_item));
+
+  top_item.go();
+
+    */
+
+}
 
 int main()
 {
+    std::map<std::string, std::function<void()>> menu;
+    menu["for_each_example"] = function_pointer::for_each_mock::for_each_mock;
+    menu["game_key_example"] = function_pointer::game_key_mock::game_key_mock;
+    menu["func_pointer_example"] = function_pointer::example_func_pointer::example_func_pointer;
+    menu["member_function_example"] = pointer_to_memeber::member_function::member_function;
+    menu["std_function_test_example"] = pointer_to_memeber::std_function::std_function_test;
+    menu["std_function_example"] = pointer_to_memeber::std_function::std_function;
 
-   /* function_pointer::for_each_mock::for_each_mock();
-      function_pointer::game_key_mock::game_key_mock();
-      function_pointer::example_func_pointer::example_func_pointer();
+    for (auto element : menu)
+    {
+        std::cout << "\n" << element.first << ": \n\n";
+        element.second();
+        std::cout << std::endl;
+    }
 
-*/
-/*
-      pointer_to_memeber::member_function::member_function();
-*/
-      //pointer_to_memeber::std_function::std_function_test();
-        pointer_to_memeber::std_function::std_function();
 
 
     return 0;
