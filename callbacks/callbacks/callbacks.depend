@@ -1,5 +1,13 @@
 # depslib dependency file v1.0
-1559220081 source:/home/oleh/Desktop/pattern/callbacks/callbacks/main.cpp
+1559562450 source:/home/oleh/Desktop/pattern/callbacks/callbacks/main.cpp
+	<iostream>
+	<vector>
+	<array>
+	<functional>
+	<map>
+	<algorithm>
+
+1559243589 source:/home/oleh/Desktop/testprj/patterns/callbacks/callbacks/main.cpp
 	<iostream>
 	<vector>
 	<array>
