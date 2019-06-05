@@ -4,8 +4,11 @@
 #include <functional>
 #include <map>
 #include <algorithm>
+#include <type_traits>
 #include <typeinfo>
-
+#include <string>
+#include <memory>
+#include <cxxabi.h>
 
 namespace function_pointer
 {
@@ -97,6 +100,7 @@ namespace function_pointer
 
     }
 }
+
 namespace pointer_to_memeber
 {
     struct MyStruct
@@ -235,6 +239,42 @@ namespace pointer_to_memeber
 
 namespace template_callback
 {
+    template<class InputIt, class OutputIt, class UnaryOperation>
+    OutputIt transform(InputIt first1, InputIt last1, OutputIt d_first, UnaryOperation unary_op)
+    {
+      while (first1 != last1)
+      {
+        *d_first++ = unary_op(*first1++);
+      }
+      return d_first;
+    }
+    template <class T>
+    std::string type_name()
+    {
+      typedef typename std::remove_reference<T>::type TR;
+      std::unique_ptr<char, void(*)(void*)> own (abi::__cxa_demangle(typeid(TR).name(), nullptr,
+                                                 nullptr, nullptr), std::free);
+      std::string r = (own != nullptr) ? own.get() : typeid(TR).name();
+
+      if (std::is_const<TR>::value)
+      {
+        r += " const";
+      }
+      if (std::is_volatile<TR>::value)
+      {
+        r += " volatile";
+      }
+      if (std::is_lvalue_reference<T>::value)
+      {
+        r += " &";
+      }
+      else if (std::is_rvalue_reference<T>::value)
+      {
+        r += " &&";
+      }
+      return r;
+    }
+
     namespace simple_template
     {
         template<class R, class T>
@@ -250,7 +290,7 @@ namespace template_callback
         template<class F>
         void transform_every_int_templ(int * v, unsigned const n, F f)
         {
-          std::cout << "transform_every_int_templ<"  << type_name<F>() << ">\n";
+         std::cout << "transform_every_int_templ<"  << type_name<F>() << ">\n";
           for (unsigned i = 0; i < n; ++i)
           {
              v[i] = f(v[i]);
@@ -258,13 +298,50 @@ namespace template_callback
         }
     }
 
-}
+    namespace example_template
+    {
+        int foo (int x) { return 2+x; }
+        int foo_2 (int x, int y) { return 2*x*y; }
+        int muh (int const &x) {return 3+x;}
+        int & woof (int &x) { x *= 4; return x; }
 
+        void print_int(int * p, unsigned const n)
+        {
+          bool f{ true };
+          for (unsigned i = 0; i < n; ++i)
+          {
+            std::cout << (f ? "" : " ") << p[i];
+            f = false;
+          }
+          std::cout << "\n";
+        }
+
+
+        void template_example()
+        {
+
+            int a[5] = { 1, 2, 3, 4, 5 };
+            print_int(a, 5);
+            simple_template::transform_every_int_templ(&a[0], 5, foo);
+            print_int(a, 5);
+            simple_template::transform_every_int_templ(&a[0], 5, muh);
+            print_int(a, 5);
+            simple_template::transform_every_int_templ(&a[0], 5, woof);
+            print_int(a, 5);
+            simple_template::transform_every_int_templ(&a[0], 5, [](int x) -> int { return x + x + x; });
+            print_int(a, 5);
+            simple_template::transform_every_int_templ(&a[0], 5, std::bind(foo_2, std::placeholders::_1, 3));
+            print_int(a, 5);
+            simple_template::transform_every_int_templ(&a[0], 5, std::function<int(int)>{&foo});
+            print_int(a, 5);
+        }
+
+    }
+}
 
 void print_menu(const std::map<std::string, std::function<void()>> &menu)
 {
     int i = 0;
-    int input = 0;
     for (auto element : menu)
     {
         std::cout << i << ") "<< element.first << "\n";
@@ -324,15 +401,113 @@ private:
 
 }
 
+
+namespace lambda
+{
+    namespace functor_test
+    {
+        struct f {
+            void operator()(int)
+            {
+                // do something
+            }
+        };
+        void func(std::vector<int>& v)
+        {
+            f f;
+            function_pointer::for_each_mock::m_for_each(v.begin(), v.end(), f);
+        }
+    }
+
+    namespace lambda_test
+    {
+        void func1(std::vector<int>& v)
+        {
+            std::for_each(v.begin(), v.end(), [](int) { /* do something here*/ });
+        }
+
+        void func2(std::vector<double>& v)
+        {
+            std::transform(v.begin(), v.end(), v.begin(), [](double d) { return d < 0.000001 ? 0 : d; });
+        }
+
+        void func3(std::vector<double>& v)
+        {
+            std::transform(v.begin(), v.end(), v.begin(), [](double d) -> double {
+                if (d < 0.00001)
+                    return 0;
+                else
+                    return d;
+            });
+        }
+
+        void func4(std::vector<double>& v, const double& epsilon)
+        {
+            std::transform(v.begin(), v.end(), v.begin(),
+                           [epsilon](double d) -> double {
+                                if (d < epsilon)
+                                    return 0;
+                                else
+                                    return d;
+                           });
+        }
+
+        void func5(std::vector<double>& v)
+        {
+            std::transform(v.begin(), v.end(), v.begin(),
+                           [epsilon = 2.0](double d) -> double {
+                                if (d < epsilon)
+                                    return 0;
+                                else
+                                    return d;
+                           });
+        }
+
+        class Student
+        {
+            public:
+                int age;
+                void captureByThis()
+                {
+                    auto myLamba = [this] () {
+                        /* return this->age */
+                        return age;
+                    };
+                }
+        };
+
+
+    static int num = 4;
+    auto whatIsNum = []() {return num;};
+
+
+        void lambda_test()
+        {
+
+
+            std::vector<double> vd = {1.0, 3.4, 2.5, 3.5, 1.9};
+            func4(vd, 3.0);
+            function_pointer::for_each_mock::m_for_each(std::begin(vd), std::end(vd), [](double & a) { std::cout << " " << a; });
+            func5(vd);
+            function_pointer::for_each_mock::m_for_each(std::begin(vd), std::end(vd), [](double & a) { std::cout << " " << a; });
+
+        }
+    }
+
+}
+
 int main()
 {
     std::map<std::string, std::function<void()>> menu;
-    menu["for_each_example"] = function_pointer::for_each_mock::for_each_mock;
+
+    /*menu["for_each_example"] = function_pointer::for_each_mock::for_each_mock;
     menu["game_key_example"] = function_pointer::game_key_mock::game_key_mock;
     menu["func_pointer_example"] = function_pointer::example_func_pointer::example_func_pointer;
     menu["member_function_example"] = pointer_to_memeber::member_function::member_function;
     menu["std_function_test_example"] = pointer_to_memeber::std_function::std_function_test;
     menu["std_function_example"] = pointer_to_memeber::std_function::std_function;
+    menu["template_example"] = template_callback::example_template::template_example;*/
+    menu["lambda_example"] = lambda::lambda_test::lambda_test;
 
     for (auto element : menu)
     {
@@ -340,7 +515,6 @@ int main()
         element.second();
         std::cout << std::endl;
     }
-
 
 
     return 0;
