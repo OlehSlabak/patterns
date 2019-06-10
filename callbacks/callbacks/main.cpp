@@ -477,20 +477,57 @@ namespace lambda
         };
 
 
-    static int num = 4;
-    auto whatIsNum = []() {return num;};
+        static int num = 4;
+        auto whatIsNum = []() {return num;};
+
+        /* In C++14 and above, use a return type of auto */
+        auto makeAutoAgeChecker(const int requiredAge)
+        {
+            return [=](const int age) { return age > requiredAge; };
+        }
+        /* Below C++14, use std::function to safely wrap the lambda */
+        std::function <bool(int)> makeFuncAgeChecker(const int requiredAge)
+        {
+            return [=](const int age) { return age > requiredAge; };
+        }
+
+        auto autoAgeChecker = makeAutoAgeChecker(18);
+        auto functionAgeChecker = makeFuncAgeChecker(42);
+
+
+
+
 
 
         void lambda_test()
         {
-
-
             std::vector<double> vd = {1.0, 3.4, 2.5, 3.5, 1.9};
             func4(vd, 3.0);
             function_pointer::for_each_mock::m_for_each(std::begin(vd), std::end(vd), [](double & a) { std::cout << " " << a; });
             func5(vd);
             function_pointer::for_each_mock::m_for_each(std::begin(vd), std::end(vd), [](double & a) { std::cout << " " << a; });
+            std::cout  << std::endl;
+            std::cout << autoAgeChecker(15) << std::endl; // false
+            std::cout << functionAgeChecker(51) << std::endl; // true
+            std::cout << "___________________" << std::endl;
 
+            int toMutate = 1;
+            auto lamda1 = [=]() mutable // capture by value
+            {
+                toMutate = 2;
+                std::cout << toMutate << std::endl;
+            };
+            lamda1();
+
+            std::cout << toMutate << std::endl;
+
+            auto lamda2 = [&]()  // capture by value
+            {
+                toMutate = 3;
+                std::cout << toMutate << std::endl;
+            };
+            lamda2();
+            std::cout << toMutate << std::endl;
         }
     }
 
