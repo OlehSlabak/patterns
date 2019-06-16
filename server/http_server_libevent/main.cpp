@@ -16,13 +16,13 @@ int main(int argc, char const **argv)
     h2.Print();
     text.Print();
 
-
+    std::cout << "\n\n" << std::endl;
     /* Builder #2 */
     Builder_2::HtmlBuilder builder { "ul" };
     builder.add_child("li", "hello").add_child("li", "world");
     std::cout << builder.str() << std::endl;
 
-
+    std::cout << "\n\n" << std::endl;
     /* Builder_3 */
     Builder_3::Product p1 = Builder_3::Product::Builder().setI(2).setF(0.5f).setC('x').setI(3).build();
 	p1.print();

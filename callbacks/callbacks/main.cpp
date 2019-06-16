@@ -51,7 +51,7 @@ namespace function_pointer
         {
             std::array<void(*)(), total_keys()> actions;
 
-            void key_pressed(unsigned key_id)
+            void key_pressed(const unsigned key_id)
             {
                 if (actions[key_id])
                     actions[key_id]();
@@ -494,9 +494,20 @@ namespace lambda
         auto autoAgeChecker = makeAutoAgeChecker(18);
         auto functionAgeChecker = makeFuncAgeChecker(42);
 
+        constexpr auto Square = [] (int n) { return n*n; };
+//        static_assert(Square(2) == 4, "Yes");
+//        static_assert(Square(2) != 4, "No, this value should be equal");
 
+        template<typename Range, typename Func, typename T>
+        constexpr T SimpleAccumulate(const Range& range, Func func, T init)
+        {
+            for (auto &&elem : range)
+            {
+                init += func(elem);
+            }
 
-
+            return init;
+        }
 
 
         void lambda_test()
@@ -528,22 +539,34 @@ namespace lambda
             };
             lamda2();
             std::cout << toMutate << std::endl;
+
+            int x = 5;
+            int y = 5;
+            [&]() { ++x; ++y; }();
+            std::cout << x << " " << y << std::endl;
+
+
+            constexpr std::array arr{1,2,3};
+          //  static_assert(SimpleAccumulate(arr, [](int i){ return i*i;}, 0) == 14);
+          //  static_assert(SimpleAccumulate(arr, [](int i){ return i*i;}, 0) == 15, "NONONO");
+
         }
     }
 
 }
 
-int main()
+//int main()
+auto main() -> int
 {
     std::map<std::string, std::function<void()>> menu;
 
-    /*menu["for_each_example"] = function_pointer::for_each_mock::for_each_mock;
+   /* menu["for_each_example"] = function_pointer::for_each_mock::for_each_mock;
     menu["game_key_example"] = function_pointer::game_key_mock::game_key_mock;
     menu["func_pointer_example"] = function_pointer::example_func_pointer::example_func_pointer;
     menu["member_function_example"] = pointer_to_memeber::member_function::member_function;
     menu["std_function_test_example"] = pointer_to_memeber::std_function::std_function_test;
-    menu["std_function_example"] = pointer_to_memeber::std_function::std_function;
-    menu["template_example"] = template_callback::example_template::template_example;*/
+    menu["std_function_example"] = pointer_to_memeber::std_function::std_function;*/
+    menu["template_example"] = template_callback::example_template::template_example;
     menu["lambda_example"] = lambda::lambda_test::lambda_test;
 
     for (auto element : menu)
@@ -551,8 +574,8 @@ int main()
         std::cout << "\n" << element.first << ": \n\n";
         element.second();
         std::cout << std::endl;
+        std::cout << std::string(25, '-')<< std::endl;
     }
-
 
     return 0;
 }
