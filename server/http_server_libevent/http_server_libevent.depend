@@ -171,10 +171,11 @@
 	<errno.h>
 	<assert.h>
 
-1558897444 source:/home/oleh/Desktop/testprj/patterns/server/http_server_libevent/main.cpp
+1560769630 source:/home/oleh/Desktop/testprj/patterns/server/http_server_libevent/main.cpp
 	"singleton_logging/logging.hpp"
 	"http_server/http_server.hpp"
 	"builder_html/builder_html.h"
+	"observe_notify/observer.h"
 
 1557602306 /home/oleh/Desktop/testprj/patterns/server/http_server_libevent/singleton_logging/logging.hpp
 	<string>
@@ -327,12 +328,28 @@
 	<iomanip>
 	"../singleton_logging/logging.hpp"
 
-1558897427 /home/oleh/Desktop/testprj/patterns/server/http_server_libevent/builder_html/builder_html.h
+1559243493 /home/oleh/Desktop/testprj/patterns/server/http_server_libevent/builder_html/builder_html.h
 	<string>
 	<iostream>
 	<sstream>
 	<memory>
 	<algorithm>
 	<vector>
+	<iomanip>
 	"../singleton_logging/logging.hpp"
+
+1559243493 source:/home/oleh/Desktop/testprj/patterns/server/http_server_libevent/builder_html/builder_html.cpp
+	"builder_html.h"
+
+1560769620 source:/home/oleh/Desktop/testprj/patterns/server/http_server_libevent/observe_notify/observer.cpp
+	"observer.h"
+	<iostream>
+	<string>
+	<algorithm>
+
+1560769621 /home/oleh/Desktop/testprj/patterns/server/http_server_libevent/observe_notify/observer.h
+	<functional>
+	<vector>
+	"../singleton_logging/logging.hpp"
+	<list>
 

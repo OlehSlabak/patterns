@@ -74,6 +74,8 @@
 		<Unit filename="http_server/server_tools/thread.cpp" />
 		<Unit filename="http_server/server_tools/thread.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="observe_notify/observer.cpp" />
+		<Unit filename="observe_notify/observer.h" />
 		<Unit filename="singleton_logging/logging.cpp" />
 		<Unit filename="singleton_logging/logging.hpp" />
 		<Extensions>

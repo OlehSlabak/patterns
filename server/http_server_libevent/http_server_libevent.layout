@@ -2,49 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="http_server/server_tools/my_types.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="http_server/server_tools/command_line.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="158" topLine="0" />
+			<Cursor1 position="548" topLine="11" />
 		</Cursor>
 	</File>
-	<File name="http_server/server_tools/inet_address_v4.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="http_server/server_tools/inet_address_v4.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="461" topLine="6" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/thread.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="355" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/socket.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="700" topLine="22" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/socket_tuner.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="118" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/tcp_server_socket.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="218" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="753" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="builder_html/builder_html.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="27" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="builder_html/builder_html.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1763" topLine="54" />
+			<Cursor1 position="577" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="http_server/server_tools/socket_holder.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -52,39 +17,19 @@
 			<Cursor1 position="538" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="builder_html/builder_html.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="958" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/tcp_server_socket.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="218" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="http_server/server_tools/inet_address.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="138" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/command_line.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="548" topLine="11" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/socket_holder.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="699" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/socket.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="590" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/tcp_server_socket.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="312" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="singleton_logging/logging.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5093" topLine="135" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/inet_address.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1637" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="http_server/server_tools/inet_address_v4.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -92,34 +37,102 @@
 			<Cursor1 position="235" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="http_server/server_tools/socket_tuner.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="118" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="observe_notify/observer.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="207" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/exceptions.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="550" topLine="2" />
+		</Cursor>
+	</File>
 	<File name="http_server/server_tools/command_line.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="413" topLine="2" />
 		</Cursor>
 	</File>
-	<File name="http_server/server_tools/http_server.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2446" topLine="51" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/exceptions.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="540" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/file_holder.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="36" />
-		</Cursor>
-	</File>
-	<File name="http_server/server_tools/file_holder.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="474" topLine="1" />
-		</Cursor>
-	</File>
 	<File name="http_server/http_server.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3029" topLine="74" />
+			<Cursor1 position="2678" topLine="77" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2057" topLine="59" />
+		</Cursor>
+		<Folding>
+			<Collapse line="54" />
+		</Folding>
+	</File>
+	<File name="http_server/server_tools/file_holder.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="412" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/tcp_server_socket.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="324" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="singleton_logging/logging.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1078" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/http_server.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1624" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/socket_holder.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="599" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/inet_address.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="644" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="observe_notify/observer.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="399" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/socket.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="363" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/file_holder.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="280" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/socket.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="590" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/thread.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="355" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="singleton_logging/logging.hpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4943" topLine="143" />
+		</Cursor>
+	</File>
+	<File name="http_server/server_tools/my_types.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="158" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
